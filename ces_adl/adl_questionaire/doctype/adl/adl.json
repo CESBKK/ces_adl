@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2025-02-27 10:08:06.868742",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "barthel_activities_of_daily_living_section",
+  "naming_series",
+  "customer",
+  "column_break_mfqk",
+  "date",
+  "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21_section",
+  "questionaire_data"
+ ],
+ "fields": [
+  {
+   "fieldname": "barthel_activities_of_daily_living_section",
+   "fieldtype": "Section Break",
+   "label": "Barthel Activities of Daily Living"
+  },
+  {
+   "default": "ADL-.YY.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Naming Series"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_mfqk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Now",
+   "fieldname": "date",
+   "fieldtype": "Datetime",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48"
+  },
+  {
+   "fieldname": "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21_section",
+   "fieldtype": "Section Break",
+   "label": "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21"
+  },
+  {
+   "default": "{\"q01\":\"\",\"q02\":\"\",\"q03\":\"\",\"q04\":\"\",\"q05\":\"\",\"q06\":\"\",\"q07\":\"\",\"q08\":\"\",\"q09\":\"\",\"q10\":\"\"}",
+   "fieldname": "questionaire_data",
+   "fieldtype": "JSON",
+   "label": "questionaire_data"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-28 23:25:58.481763",
+ "modified_by": "Administrator",
+ "module": "ADL Questionaire",
+ "name": "ADL",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

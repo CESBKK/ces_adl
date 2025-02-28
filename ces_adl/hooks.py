@@ -31,6 +31,14 @@ app_license = "agpl-3.0"
 # include js, css files in header of web template
 # web_include_css = "/assets/ces_adl/css/ces_adl.css"
 # web_include_js = "/assets/ces_adl/js/ces_adl.js"
+# web_include_css = "/assets/ces_adl/css/defaultV2.min.css"
+# web_include_js = [
+#     "/assets/ces_adl/js/survey.core.min.js",
+#     "/assets/ces_adl/js/survey-js-ui.min.js",
+#     "/assets/ces_adl/js/survey.i18n.min.js",
+#     "/assets/ces_adl/js/theme.index.min.js"
+# ]
+
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "ces_adl/public/scss/website"
@@ -44,9 +52,20 @@ app_license = "agpl-3.0"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+# doctype_js = {
+#     "ADL": [
+#         "/assets/frappe/js/lib/jquery/jquery.min.js",
+#         "/assets/js/frappe-web.bundle.js",
+#         "/assets/js/control.bundle.js",
+#         "/assets/js/dialog.bundle.js",
+#         "/assets/js/bootstrap-4-web.bundle.js"
+#     ]
+# }
+
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
 
 # Svg Icons
 # ------------------
@@ -242,3 +261,11 @@ app_license = "agpl-3.0"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# fixtures = [
+#     {
+#         "dt": "Web Page",
+#         "filters": [
+#             ["Title", "=", "ADL"]
+#         ]
+#     }
+# ]

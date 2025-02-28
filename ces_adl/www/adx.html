@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ADL</title>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/assets/erpnext/images/erpnext-favicon.svg" type="image/x-icon" />
+    <script src="/assets/ces_adl/js/survey.core.min.js"></script>
+    <script src="/assets/ces_adl/js/survey.i18n.min.js"></script>
+    <script src="/assets/ces_adl/js/survey-js-ui.min.js"></script>
+    <link rel="stylesheet" href="/assets/ces_adl/css/defaultV2.min.css" />
+  </head>
+  <body>
+    <div id="surveyElement" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; min-height: 100%; height:100%"></div>
+    <script>
+        const json = {
+            "title": "Patient Feedback Questionnaire",
+            "logoPosition": "right",
+            "completedHtml": "<div style=\"max-width: 1000px; width: 100%; padding 32px; margin: 0 auto;\">\n    <p style=\"text-align: justify\">Dear patient,</p>\n<br>\n    <p style=\"text-align: justify\">Thank you \nvery much for taking the time to complete this questionnaire.</p>\n<br>\n    <p style=\"text-align: justify\">Your views are important, valued and appreciated. This anonymous and confidential information will significantly assist in the professional development of this doctor in training.</p>\n</div>",
+            "pages": [
+            {
+            "name": "page-one",
+            "elements": [
+                {
+                "type": "panel",
+                "name": "introduction",
+                "elements": [
+                {
+                "type": "html",
+                "name": "doctor",
+                "minWidth": "250px",
+                "maxWidth": "5%",
+                "html": "<p style=\"line-height: 32px;\">Patient questionnaire for Dr</p>\n"
+                },
+                {
+                "type": "text",
+                "name": "doctors-name",
+                "startWithNewLine": false,
+                "titleLocation": "hidden"
+                },
+                {
+                "type": "html",
+                "name": "date",
+                "minWidth": "70px",
+                "maxWidth": "5%",
+                "startWithNewLine": false,
+                "html": "<p style=\"line-height: 32px;\">Date</p>\n"
+                },
+                {
+                "type": "text",
+                "name": "date-picker",
+                "minWidth": "250px",
+                "maxWidth": "5%",
+                "startWithNewLine": false,
+                "title": "Date",
+                "titleLocation": "hidden",
+                "inputType": "date"
+                },
+                {
+                "type": "html",
+                "name": "statement",
+                "html": "</p>\n<p style=\"margin-top: 0.5em; text-align: justify;\">All doctors in training are expected to seek feedback on a regular basis from those they work with and treat. Information from patients, relatives and friends is an important part of this process. The \nfeedback will be reviewed and acted upon where appropriate.</p>\n\n<p style=\"margin-top: 0.5em; text-align: justify;\">The answers you give should only be about today’s consultation with the named doctor.</p>\n\n<p style=\"margin-top: 0.5em; text-align: justify;\">Please do <b>NOT</b> write your name on this questionnaire. You will not be identified when your answers are given back to the doctor.</p>"
+                }
+                ]
+                },
+                {
+                "type": "radiogroup",
+                "name": "who-for",
+                "indent": 2,
+                "title": "Are you filling in this questionnaire for: ",
+                "choices": [
+                "Yourself ",
+                "Your child ",
+                "Your spouse or partner ",
+                "Another relative or friend"
+                ],
+                "colCount": 4
+                },
+                {
+                "type": "html",
+                "name": "view-point",
+                "visibleIf": "{who-for} anyof ['Another relative or friend', 'Your spouse or partner ', 'Your child ']",
+                "html": "<style>\n        .indented {\n            margin-left: 37px;\n        }\n    </style>\n</head>\n<body>\n    <p class=\"indented\">If you are filling this in for someone else, please answer the following questions <u>from the patient’s point of view.</u></p>"
+                },
+                {
+                "type": "checkbox",
+                "name": "visit-reason",
+                "indent": 2,
+                "title": " Which of the following best describes the reason you saw the doctor today?",
+                "description": "(Please tick all the boxes that apply)",
+                "choices": [
+                "To ask for advice ",
+                "Because of an ongoing problem ",
+                "For treatment (including prescriptions)",
+                "Because of a one-off problem ",
+                "For a routine check "
+                ],
+                "showOtherItem": true,
+                "otherText": "Other (please give details)",
+                "colCount": 3,
+                "maxSelectedChoices": 6,
+                "minSelectedChoices": 1
+                },
+                {
+                "type": "rating",
+                "name": "visit-importance",
+                "indent": 2,
+                "title": "On a scale of 1 to 5, how important to your health and wellbeing was your reason for visiting the doctor today?",
+                "rateType": "stars",
+                "minRateDescription": "Not very important",
+                "maxRateDescription": "Very important"
+                },
+                {
+                "type": "matrix",
+                "name": "how-good-matrix",
+                "title": "How good was your doctor today at each of the following?",
+                "description": "(Please hit one radio button in each line)",
+                "alternateRows": true,
+                "rowTitleWidth": "180px",
+                "columns": [
+                {
+                "value": "poor",
+                "text": "Poor"
+                },
+                {
+                "value": "less",
+                "text": "Less than Satisfactory"
+                },
+                {
+                "value": "satisfactory",
+                "text": "Satisfactory"
+                },
+                {
+                "value": "good",
+                "text": "Good"
+                },
+                {
+                "value": "very-good",
+                "text": "Very good"
+                },
+                {
+                "value": "not-applicable",
+                "text": "Does not apply"
+                }
+                ],
+                "rows": [
+                {
+                "value": "polite",
+                "text": "Being polite"
+                },
+                {
+                "value": "ease",
+                "text": "Making you feel at ease"
+                },
+                {
+                "value": "listeb",
+                "text": "Listening to you"
+                },
+                {
+                "value": "assess",
+                "text": "Assessing your medical condition"
+                },
+                {
+                "value": "explain",
+                "text": "Explaining your condition and treatment"
+                },
+                {
+                "value": "involve",
+                "text": "Involving you in decisions about your treatment"
+                },
+                {
+                "value": "provide",
+                "text": "Providing or arranging treatment for you"
+                }
+                ],
+                "isAllRowRequired": true
+                },
+                {
+                "type": "matrix",
+                "name": "agree-matrix",
+                "title": "Please decide how strongly you agree or disagree with the following statements by selecting one radio button in each line.",
+                "description": "(Please hit one button in each line)",
+                "alternateRows": true,
+                "rowTitleWidth": "180px",
+                "columns": [
+                {
+                "value": "1",
+                "text": "Strongly disagree"
+                },
+                {
+                "value": "2",
+                "text": "Disagree"
+                },
+                {
+                "value": "3",
+                "text": "Neutral"
+                },
+                {
+                "value": "4",
+                "text": "Agree"
+                },
+                {
+                "value": "5",
+                "text": "Strongly agree"
+                },
+                {
+                "value": "6",
+                "text": "Does not apply"
+                }
+                ],
+                "rows": [
+                {
+                "value": "1",
+                "text": "This doctor will keep information about me confidential"
+                },
+                {
+                "value": "2",
+                "text": "This doctor is honest and trustworthy"
+                }
+                ],
+                "isAllRowRequired": true
+                },
+                {
+                "type": "boolean",
+                "name": "confidence",
+                "indent": 2,
+                "title": "I am confident about this doctor’s ability to provide care."
+                },
+                {
+                "type": "boolean",
+                "name": "happiness",
+                "indent": 2,
+                "title": "I would be completely happy to see this doctor again."
+                },
+                {
+                "type": "boolean",
+                "name": "usual-doctor",
+                "indent": 2,
+                "title": "Was this visit with your usual doctor? "
+                },
+                {
+                "type": "comment",
+                "name": "optional-comments",
+                "indent": 2,
+                "title": "Please add any other comments you want to make about this doctor. ",
+                "description": "Please note: No patients will be identified when this information is given to the doctor. ",
+                "maxLength": 250,
+                "rows": 2,
+                "autoGrow": true
+                }
+            ]
+            },
+            {
+            "name": "page-two",
+            "elements": [
+                {
+                "type": "html",
+                "name": "instructions",
+                "html": "<style>\n        .indented {\n            margin-left: 37px;\n        }\n    </style>\n</head>\n<body>\n    <p class=\"indented\">The next questions will provide the doctor with some basic information about who took part in the survey. If you are filling this\nin on behalf of a child or a patient with a disability, please provide details about <u>the patient.</u></p>"
+                },
+                {
+                "type": "panel",
+                "name": "gender-age-ethnicity-panel",
+                "elements": [
+                {
+                "type": "radiogroup",
+                "name": "gender",
+                "title": "Are you:",
+                "titleLocation": "left",
+                "choices": [
+                    {
+                    "value": "Item 1",
+                    "text": "Female"
+                    },
+                    {
+                    "value": "Item 2",
+                    "text": "Male"
+                    }
+                ],
+                "colCount": 5
+                },
+                {
+                "type": "radiogroup",
+                "name": "age",
+                "title": "Age:",
+                "titleLocation": "left",
+                "choices": [
+                    "Under 15 ",
+                    "15–20 ",
+                    "21–40 ",
+                    "40–60 ",
+                    "60 or over"
+                ],
+                "colCount": 5
+                },
+                {
+                "type": "dropdown",
+                "name": "ethnic group",
+                "title": "What is your ethnic group?",
+                "titleLocation": "left",
+                "choices": [
+                    "A White ",
+                    "B Mixed ",
+                    "C Asian or Asian British ",
+                    "D Black or Black British ",
+                    "E Chinese or other ethnic group"
+                ]
+                },
+                {
+                "type": "checkbox",
+                "name": "white",
+                "visibleIf": "{ethnic group} = 'A White '",
+                "titleLocation": "hidden",
+                "choices": [
+                    {
+                    "value": "Item 1",
+                    "text": "British"
+                    },
+                    {
+                    "value": "Item 2",
+                    "text": "Irish"
+                    }
+                ],
+                "showOtherItem": true,
+                "otherText": "Any other White background (please write in)",
+                "colCount": 3
+                },
+                {
+                "type": "checkbox",
+                "name": "mixed",
+                "visibleIf": "{ethnic group} = 'B Mixed '",
+                "titleLocation": "hidden",
+                "choices": [
+                    {
+                    "value": "Item 1",
+                    "text": "White and Black Caribbean"
+                    },
+                    {
+                    "value": "Item 2",
+                    "text": "White and Black African"
+                    },
+                    {
+                    "value": "Item 3",
+                    "text": "White and Asian"
+                    }
+                ],
+                "showOtherItem": true,
+                "otherText": "Any other Mixed background (please write in)",
+                "colCount": 3
+                },
+                {
+                "type": "checkbox",
+                "name": "asian",
+                "visibleIf": "{ethnic group} = 'C Asian or Asian British '",
+                "titleLocation": "hidden",
+                "choices": [
+                    {
+                    "value": "Item 1",
+                    "text": "Indian"
+                    },
+                    {
+                    "value": "Item 2",
+                    "text": "Pakistani"
+                    },
+                    {
+                    "value": "Item 3",
+                    "text": "Bangladeshi"
+                    }
+                ],
+                "showOtherItem": true,
+                "otherText": "Any other Asian background (please write in)",
+                "colCount": 3
+                },
+                {
+                "type": "checkbox",
+                "name": "black",
+                "visibleIf": "{ethnic group} = 'D Black or Black British '",
+                "titleLocation": "hidden",
+                "choices": [
+                    {
+                    "value": "Item 1",
+                    "text": "Caribbean"
+                    },
+                    {
+                    "value": "Item 2",
+                    "text": "African"
+                    }
+                ],
+                "showOtherItem": true,
+                "otherText": "Any other Black background (please write in)",
+                "colCount": 3
+                },
+                {
+                "type": "checkbox",
+                "name": "other",
+                "visibleIf": "{ethnic group} = 'E Chinese or other ethnic group'",
+                "titleLocation": "hidden",
+                "choices": [
+                    {
+                    "value": "Item ",
+                    "text": "Chinese"
+                    }
+                ],
+                "showOtherItem": true,
+                "otherText": "Any other (please write in)",
+                "colCount": 3
+                }
+                ]
+                }
+            ]
+            }
+            ],
+            "showQuestionNumbers": "off",
+            "widthMode": "static",
+            "width": "1200"
+        };
+    </script>
+    <script>
+        const survey = new Survey.Model(json);
+        
+        survey.locale = "th";
+        survey.onComplete.add((sender, options) => {
+            console.log(JSON.stringify(sender.data, null, 3));
+        });
+
+        survey.render(document.getElementById("surveyElement"));
+        // $("footer").addClass("hide");
+    </script>
+    <!-- js should be loaded in body! -->
+	<script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/frappe/js/frappe-web.bundle.js"></script>
+	<script type="text/javascript" src="/assets/frappe/js/controls.bundle.js"></script>
+	<script type="text/javascript" src="/assets/frappe/js/dialog.bundle.js"></script>
+	<script type="text/javascript" src="/assets/frappe/js/bootstrap-4-web.bundle.js"></script>
+    <script>
+    let d = new frappe.ui.Dialog({
+        'fields': [ 
+            {'fieldname': 'ht', 'fieldtype': 'HTML'},
+            {'fieldname': 'today', 'fieldtype': 'Date', 'default': frappe.datetime.nowdate()}
+        ], 
+        primary_action: function(){ 
+            d.hide(); show_alert(d.get_values()); 
+        } 
+    }); 
+        d.fields_dict.ht.$wrapper.html('Hello World');
+        d.show();
+    </script>
+  </body>
+</html>
