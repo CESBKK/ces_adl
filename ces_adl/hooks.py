@@ -26,7 +26,9 @@ app_license = "agpl-3.0"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ces_adl/css/ces_adl.css"
+app_include_css = "/assets/ces_adl/css/radio.css"
 # app_include_js = "/assets/ces_adl/js/ces_adl.js"
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/ces_adl/css/ces_adl.css"
@@ -61,7 +63,6 @@ app_license = "agpl-3.0"
 #         "/assets/js/bootstrap-4-web.bundle.js"
 #     ]
 # }
-
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}

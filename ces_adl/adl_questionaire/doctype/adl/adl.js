@@ -5,6 +5,9 @@ frappe.ui.form.on('ADL', {
     setup(frm){
         setup_queationaire(frm);
     },
+    refresh(frm){
+        make_radio_button(frm);
+    },
     validate(frm){
         frm.question_list.every((item) => {
             if (item.value === null || item.value === '') {
@@ -238,5 +241,73 @@ sync_quetionaire_json = (frm) => {
         item_index = jsonData[item.df.fieldname];
         item_index = item_index === '' ? 0 : item_index+1;
         item.set_value(item.df.options[item_index]);
+    });
+}
+
+make_radio_button = (frm) => {
+    /*
+    Display drop-down menu in radio button format.
+    Frappe 15 does not have radio button. We will need to use this procedures if we need radio button.
+    Drop down still exist but we hide it.
+    https://stackoverflow.com/questions/3974217/convert-dropdowns-to-radio-buttons-w-o-modifying-html
+    */
+    frm.question_list.forEach((item) => {
+        $('[data-fieldname="' + item.df.fieldname + '"][placeholder]').each((selectIndex, selectElement) => {
+            let select = $(selectElement);
+            let container = $('<div class="radioSelectContainer" />');
+            select.hide();
+            $('.select-icon').hide();
+            select.after(container);
+            container.append(select);
+
+            select.find('option').each(function (optionIndex, optionElement) { // get the options
+                let radioGroup = item.df.fieldname + 'Group';
+                let label = $('<label />');
+                container.append(label);
+                
+                if ($(this).val() !== '') {
+                    // <input type="radio" name="q01Group" value="1 ตักอาหารเองได้">
+                    $('<input type="radio" name="' + radioGroup + '" />') // create a radio element
+                        .attr('value', $(this).val()) // set the value
+                        .click((() => {
+                            select.val($(this).val()); //radio updates select - see optional below
+                            select.trigger('change');
+                        }))
+                        .appendTo(label);
+                    $('<span>' + $(this).val() + '</span>').appendTo(label);
+                }
+            });
+
+            container.find(':radio + span').mousedown(
+                function(e) {
+                    let $span = $(this);
+                    let $radio = $span.prev();
+                    if ($radio.is(':checked')) {
+                        let uncheck = function() {
+                            setTimeout(function () { 
+                                $radio.prop('checked', false);
+                                select.val(null); //set value to null when unchecked.
+                                select.trigger('change');
+                            }, 0);
+                        };
+                        let unbind = function() {
+                            $span.unbind('mouseup', up);
+                        };
+                        let up = function() {
+                            uncheck();
+                            unbind();
+                        };
+                        $span.bind('mouseup', up);
+                        $span.one('mouseout', unbind);
+                    } else {
+                        select.val($radio.val());
+                    }
+                }
+            );
+
+            select.change((() => { //select updates radio
+                $('input[name="' + item.df.fieldname + 'Group' + '"][value="' + this.value + '"]').prop('checked', true);
+            }));
+        });
     });
 }
