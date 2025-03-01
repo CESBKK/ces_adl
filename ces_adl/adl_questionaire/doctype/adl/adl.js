@@ -2,17 +2,26 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('ADL', {
-	refresh(frm) {
-
-	},
     setup(frm){
         setup_queationaire(frm);
     },
-
+    validate(frm){
+        frm.question_list.every((item) => {
+            if (item.value === null || item.value === '') {
+                frappe.msgprint({
+                    title: __('Validation Error'),
+                    message: __('Please answer all questions.'),
+                    indicator: 'orange'
+                });
+                frappe.validated = false;
+                return false;
+            }
+            return true;
+        });
+    }
 });
 
 setup_queationaire = (frm) => {
-    this.frm = frm;
     frm.q01 = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
@@ -193,26 +202,41 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
+    
+    frm.question_list = [frm.q01, frm.q02, frm.q03, frm.q04, frm.q05, frm.q06, frm.q07, frm.q08, frm.q09, frm.q10];
     // $('[data-fieldname="questionaire_data"]').hide();
+    sync_quetionaire_json(frm);
 }
 
 on_questionaire_change = (frm) => {
     let jsonData = {};
-    let i = 0;
-    [frm.q01, frm.q02, frm.q03, frm.q04, frm.q05, frm.q06, frm.q07, frm.q08, frm.q09, frm.q10].forEach((item) => {
-        if (item.value === null) {
+    let totalScore = 0;
+    frm.question_list.forEach((item) => {
+        if (item.value === null || item.value === '') {
             jsonData[item.df.fieldname] = '';
         }
         else {
             jsonData[item.df.fieldname] = parseInt(item.value.split(' ')[0]);
-            i += jsonData[item.df.fieldname];
+            totalScore += jsonData[item.df.fieldname];
         }
     });
-    jsonData['total'] = i;
+    jsonData['total'] = totalScore;
     // jsonData = JSON.stringify(jsonData, null, 4);
     jsonData = JSON.stringify(jsonData);
     frm.set_value('questionaire_data', jsonData);
-    console.log('ADL Questionaire Data');
-    console.log(jsonData);
     frm.dirty();
+}
+
+sync_quetionaire_json = (frm) => {
+    let jsonData = frm.doc.questionaire_data;
+    
+    // For Debuging
+    // jsonData = '{"q01":"","q02":1,"q03":3,"q04":2,"q05":1,"q06":1,"q07":1,"q08":1,"q09":1,"q10":1, "total":9}'
+    jsonData = JSON.parse(jsonData);
+    
+    frm.question_list.forEach((item) => {
+        item_index = jsonData[item.df.fieldname];
+        item_index = item_index === '' ? 0 : item_index+1;
+        item.set_value(item.df.options[item_index]);
+    });
 }
