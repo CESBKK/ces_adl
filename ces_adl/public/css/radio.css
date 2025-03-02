@@ -1,29 +1,23 @@
-/* http://jsfiddle.net/496c9/ */
-
 .control-label {
+    margin-top: 1em;
     font-size: 1.1em !important;
 }
-/*
-.radioSelectContainer > select {
-    display: none;
-}
-*/
+
 .radioSelectContainer > div {
     display: block;
-    margin: 0.3em 0.3em 0 0;
+    margin: 0.3em 0.3em 0.5em 0;
     border-radius: 4px;
 }
 
 .radioSelectContainer > div > label {
     margin-left: -1.5em;
     text-align: left;
-    display: block;
-    width:100%;
+    display: inline;
+    width: 90%;
     left: 2em;
     position: relative;
 }
 
-
 .radioSelectContainer > div > input {
-    padding: 0.1em 0.1em;
+    padding: 0em 0.2em;
 }

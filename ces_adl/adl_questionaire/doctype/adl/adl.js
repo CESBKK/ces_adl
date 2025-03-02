@@ -39,7 +39,7 @@ frappe.ui.form.on('ADL', {
 });
 
 setup_queationaire = (frm) => {
-    frm.q01 = frappe.ui.form.make_control({
+    frm.fields_dict['q01'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(1) รับประทานอาหารเมื่อเตรียมสํารับไว้ให้เรียบร้อยต่อหน้า',
@@ -57,7 +57,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q02 = frappe.ui.form.make_control({
+    frm.fields_dict['q02'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(2) การล้างหน้า หวีผม แปรงฟัน โกนหนวดในระยะเวลา 24–48 ชั่วโมงที่ผ่านมา',
@@ -74,7 +74,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q03 = frappe.ui.form.make_control({
+    frm.fields_dict['q03'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(3) ลุกนั่งจากที่นอน หรือจากเตียงไปยังเก้าอี้',
@@ -93,7 +93,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q04 = frappe.ui.form.make_control({
+    frm.fields_dict['q04'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(4) การใช้ห้องน้ำ',
@@ -111,7 +111,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q05 = frappe.ui.form.make_control({
+    frm.fields_dict['q05'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(5) การเคลื่อนที่ภายในห้องหรือบ้าน',
@@ -130,7 +130,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q06 = frappe.ui.form.make_control({
+    frm.fields_dict['q06'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(6) การสวมใส่เสื้อผ้า',
@@ -148,7 +148,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q07 = frappe.ui.form.make_control({
+    frm.fields_dict['q07'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(7) การขึ้นลงบันได 1 ชั้น',
@@ -166,7 +166,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q08 = frappe.ui.form.make_control({
+    frm.fields_dict['q08'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(8) การอาบน้ำ',
@@ -183,7 +183,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q09 = frappe.ui.form.make_control({
+    frm.fields_dict['q09'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(9) การกลั้นการถ่ายอุจจาระ ใน 1 สัปดาห์ที่ผ่านมา',
@@ -201,7 +201,7 @@ setup_queationaire = (frm) => {
         },
         render_input: true
     });
-    frm.q10 = frappe.ui.form.make_control({
+    frm.fields_dict['q10'] = frappe.ui.form.make_control({
         parent: frm.fields_dict.questionaire_data.parent,
         df: {
             label: '(10) การกลั้นปัสสาวะในระยะ 1 สัปดาห์ที่ผ่านมา',
@@ -220,8 +220,19 @@ setup_queationaire = (frm) => {
         render_input: true
     });
     
-    frm.question_list = [frm.q01, frm.q02, frm.q03, frm.q04, frm.q05, frm.q06, frm.q07, frm.q08, frm.q09, frm.q10];
-    $(`[data-fieldname="questionaire_data"]`).hide();
+    frm.question_list = [
+        frm.fields_dict.q01,
+        frm.fields_dict.q02,
+        frm.fields_dict.q03,
+        frm.fields_dict.q04,
+        frm.fields_dict.q05,
+        frm.fields_dict.q06,
+        frm.fields_dict.q07,
+        frm.fields_dict.q08,
+        frm.fields_dict.q09,
+        frm.fields_dict.q10
+    ];
+    $(frm.fields_dict.questionaire_data.wrapper).hide();
 }
 
 on_questionaire_change = (frm) => {
