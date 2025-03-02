@@ -1,32 +1,29 @@
 /* http://jsfiddle.net/496c9/ */
 
+.control-label {
+    font-size: 1.1em !important;
+}
+/*
 .radioSelectContainer > select {
     display: none;
 }
-
-.radioSelectContainer > label {
+*/
+.radioSelectContainer > div {
     display: block;
     margin: 0.3em 0.3em 0 0;
     border-radius: 4px;
 }
 
-.radioSelectContainer > label > span {
-    margin-left: -2em;
+.radioSelectContainer > div > label {
+    margin-left: -1.5em;
     text-align: left;
-    display: inline;
+    display: block;
     width:100%;
     left: 2em;
     position: relative;
 }
 
 
-.radioSelectContainer > label > input {
+.radioSelectContainer > div > input {
     padding: 0.1em 0.1em;
 }
-
-/*
-.radioSelectContainer > label > input:checked + span {
-background-color: #404040;
-}
-
-*/

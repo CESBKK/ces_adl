@@ -12,7 +12,9 @@
   "column_break_mfqk",
   "date",
   "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21_section",
-  "questionaire_data"
+  "questionaire_data",
+  "adl_result",
+  "adl_score"
  ],
  "fields": [
   {
@@ -53,11 +55,22 @@
    "fieldname": "questionaire_data",
    "fieldtype": "JSON",
    "label": "questionaire_data"
+  },
+  {
+   "fieldname": "adl_score",
+   "fieldtype": "Int",
+   "is_virtual": 1,
+   "label": "ADL Score"
+  },
+  {
+   "fieldname": "adl_result",
+   "fieldtype": "Section Break",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e1c\u0e25"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-01 08:51:49.712823",
+ "modified": "2025-03-02 18:03:18.836662",
  "modified_by": "Administrator",
  "module": "ADL Questionaire",
  "name": "ADL",
