@@ -1,0 +1,91 @@
+/* Dark Mode CSS for Radio Buttons (based on radio.css) */
+
+body.dark-mode {
+    background-color: #282c34; /* Dark gray background */
+    color: #abb2bf;          /* Light gray text */
+  }
+  
+  /* Question Styles */
+  .ces-adl-question.dark-mode {
+    margin: 1em 0 0 0 !important;
+    font-size: 1.1em !important;
+    color: #d8dee9; /* Slightly lighter gray for questions in dark mode */
+  }
+  
+  /* Radio Button Labels */
+  label.ml-2.dark-mode {
+    margin-left: -1.5em !important;
+    left: 2em !important;
+    display: inline;
+    position: relative;
+    color: #d8dee9; /* Lighter gray for labels */
+  }
+  
+  
+  /* Radio Button Container Styles */
+  .radioSelectContainer.dark-mode > div {
+    margin: 0.6em 0.3em;
+    border-radius: 4px;
+    background-color: #333; /* Darker gray background for the container */
+    border: 1px solid #555; /* Subtle border for contrast */
+    padding: 0.5em; /* Added padding for better visual separation */
+  }
+  
+  .radioSelectContainer.dark-mode input[type="radio"] {
+    /* For better contrast, use a light colored checkmark */
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #333; /* Match container background */
+    margin: 0;
+    font: inherit;
+    color: #d8dee9;
+    width: 1.2em;
+    height: 1.2em;
+    border: 0.15em solid #888;
+    border-radius: 50%;
+    cursor: pointer; /* Make it clear it's clickable */
+  }
+  
+  .radioSelectContainer.dark-mode input[type="radio"]:checked {
+    background-color: #4CAF50; /* Green checkmark when selected */
+  }
+  
+  .radioSelectContainer.dark-mode input[type="radio"]:checked::before {
+    content: "";
+    display: block;
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 50%;
+    background-color: white; /* White checkmark inside the green circle */
+  }
+  
+  .radioSelectContainer.dark-mode input[type="radio"]:focus {
+    outline: 2px solid #666;
+    outline-offset: 2px;
+  }
+  
+  .radioSelectContainer.dark-mode input[type="radio"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+  }
+  
+  
+  /* --- Optional ---  You can add these styles if you want a more material design feel */
+  .radioSelectContainer.dark-mode input[type="radio"]::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .radioSelectContainer.dark-mode input[type="radio"]:checked::after {
+    opacity: 1;
+  }
+    

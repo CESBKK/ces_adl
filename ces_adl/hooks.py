@@ -26,7 +26,7 @@ app_license = "agpl-3.0"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ces_adl/css/ces_adl.css"
-app_include_css = "/assets/ces_adl/css/radio.css"
+app_include_css = ["/assets/ces_adl/css/adl.css", "/assets/ces_adl/css/adl-dark.css"]
 # app_include_js = "/assets/ces_adl/js/ces_adl.js"
 
 

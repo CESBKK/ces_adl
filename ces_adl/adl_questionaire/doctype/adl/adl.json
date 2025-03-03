@@ -72,16 +72,16 @@
   },
   {
    "fetch_from": "customer.customer_name",
+   "fetch_if_empty": 1,
    "fieldname": "client_name",
    "fieldtype": "Data",
-   "is_virtual": 1,
    "label": "Client Name",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-03 11:55:11.273118",
+ "modified": "2025-03-03 15:40:41.882309",
  "modified_by": "Administrator",
  "module": "ADL Questionaire",
  "name": "ADL",
