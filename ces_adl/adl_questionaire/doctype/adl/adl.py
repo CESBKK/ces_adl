@@ -11,3 +11,7 @@ class ADL(Document):
     def adl_score(self):
         result = json.loads(frappe.db.get_value("ADL", self.name, "questionaire_data"))
         return result['total']
+
+    @property
+    def client_name(self):
+        return frappe.db.get_value("Customer", self.customer, "customer_name")

@@ -9,9 +9,10 @@
   "barthel_activities_of_daily_living_section",
   "naming_series",
   "customer",
+  "client_name",
   "column_break_mfqk",
   "date",
-  "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21_section",
+  "questionaire_section",
   "questionaire_data",
   "adl_result",
   "adl_score"
@@ -20,14 +21,16 @@
   {
    "fieldname": "barthel_activities_of_daily_living_section",
    "fieldtype": "Section Break",
-   "label": "Barthel Activities of Daily Living"
+   "label": "Barthel Activities of Daily Living Index"
   },
   {
    "default": "ADL-.YY.MM.-",
    "fieldname": "naming_series",
    "fieldtype": "Data",
    "hidden": 1,
-   "label": "Naming Series"
+   "label": "Naming Series",
+   "print_hide": 1,
+   "search_index": 1
   },
   {
    "fieldname": "customer",
@@ -46,11 +49,6 @@
    "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48"
   },
   {
-   "fieldname": "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21_section",
-   "fieldtype": "Section Break",
-   "label": "\u0e41\u0e1a\u0e1a\u0e2a\u0e2d\u0e1a\u0e16\u0e32\u0e21"
-  },
-  {
    "default": "{\"q01\":\"\",\"q02\":\"\",\"q03\":\"\",\"q04\":\"\",\"q05\":\"\",\"q06\":\"\",\"q07\":\"\",\"q08\":\"\",\"q09\":\"\",\"q10\":\"\",\"total\":0}",
    "fieldname": "questionaire_data",
    "fieldtype": "JSON",
@@ -66,11 +64,24 @@
    "fieldname": "adl_result",
    "fieldtype": "Section Break",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e1c\u0e25"
+  },
+  {
+   "fieldname": "questionaire_section",
+   "fieldtype": "Section Break",
+   "label": "\u0e41\u0e1a\u0e1a\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e43\u0e19\u0e01\u0e32\u0e23\u0e14\u0e33\u0e40\u0e19\u0e34\u0e19\u0e0a\u0e35\u0e27\u0e34\u0e15\u0e1b\u0e23\u0e30\u0e08\u0e33\u0e27\u0e31\u0e19 \u0e14\u0e31\u0e0a\u0e19\u0e35\u0e1a\u0e32\u0e23\u0e4c\u0e40\u0e18\u0e25\u0e40\u0e2d\u0e14\u0e35\u0e41\u0e2d\u0e25"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Client Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-03-02 18:03:18.836662",
+ "modified": "2025-03-03 11:55:11.273118",
  "modified_by": "Administrator",
  "module": "ADL Questionaire",
  "name": "ADL",
