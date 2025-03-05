@@ -1,6 +1,9 @@
 ## ADL Questionaire
 
-Activities of Daily Living Questionaire
+Thai version of the Barthel Activities of Daily Living Index Questionaire
+This is a 20-point version.
+
+
 
 #### License
 
